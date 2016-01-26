@@ -3,7 +3,7 @@
 const login = require('facebook-chat-api');
 const moment = require('moment');
 const config = require('./config');
-const Task = require('./models/task');
+const Tasks = require('./models/task');
 
 
 login({email: config.fb.e, password: config.fb.p}, function(err, api) {
@@ -19,7 +19,19 @@ login({email: config.fb.e, password: config.fb.p}, function(err, api) {
         msg = msg.slice('add task '.length).split('\"');
         var subj = msg[1],
             task = msg[3],
-            date = msg[5];
+            date = msg[5]; // YYYY-MM-DD
+        Tasks.create({
+            threadID: event.threadID, 
+            senderID: event.senderID, 
+            taskName: task, 
+            taskSubject: subj, 
+            addDate: moment(), 
+            dueDate: moment(date),
+          }, function(err, message) {
+            if (err) return console.error(err);
+            console.log('Task added')
+          }
+        );
       }
     }
   })
