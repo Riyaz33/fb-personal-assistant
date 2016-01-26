@@ -40,7 +40,7 @@ login({email: config.fb.e, password: config.fb.p}, function(err, api) {
             if (utils.isEmpty(tasks)) 
               return api.sendMessage('No tasks for ' + subj, event.threadID);
             tasks.forEach(function(task) {
-              api.sendMessage(task.taskName + " | due " + moment(task.dueDate, 'x'), event.threadID);
+              api.sendMessage(task.taskName + " | " + moment.unix(task.dueDate).format("MMM Do, YYYY"), event.threadID);
             })
           });
         } else {
