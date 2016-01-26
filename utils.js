@@ -2,8 +2,8 @@
 
 const moment = require('moment');
 
-var isEmpty = function(s) {
-  return s === '';
+var isEmpty = function(e) {
+  return typeof(s) == 'string' ? e === '' : e.length == 0 
 }
 
 var parseDate = function(date) {
