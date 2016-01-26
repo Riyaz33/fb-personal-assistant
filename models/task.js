@@ -7,8 +7,8 @@ const TaskSchema = new mongoose.Schema({
   senderID: String,
   taskName: String,
   taskSubject: String,
-  addDate: Number,
-  dueDate: Number,
+  addDate: String,
+  dueDate: String,
 }, {strict: false});
 
 module.exports = db.model('tasks', TaskSchema);
