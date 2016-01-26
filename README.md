@@ -15,6 +15,19 @@ A personal FB Messenger bot to help with keeping track of upcoming tasks.
 	npm install
 	```
 
++ Add FB credentials
+
+	```
+	touch config.js
+	```
+
+	```javascript
+	module.exports.fb = { // Facebook credentials
+		e: '', // Email
+		p: '' // Password
+	}
+	```
+
 + Run app
 
 	```
