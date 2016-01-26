@@ -37,3 +37,8 @@ A personal FB Messenger bot to help with keeping track of upcoming tasks.
 	```
 	node index.js
 	```
+
+
+#### Usage
+
+Run `@taskbot help` for a list of commands.
