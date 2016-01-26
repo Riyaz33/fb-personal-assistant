@@ -32,20 +32,27 @@ login({email: config.fb.e, password: config.fb.p}, function(err, api) {
         );
       } else if (msg.includes('show tasks')) {
         msg = msg.slice('show tasks'.length);
+        var query = {};
+        var subj;
+
         if (!utils.isEmpty(msg)) {
-          var subj = msg.slice(' for '.length).split('\"')[1];
-          Tasks.find({ taskSubject: subj }, function(err, tasks) {
-            if (err) return console.error(err);
-            var out;
-            if (utils.isEmpty(tasks)) 
-              return api.sendMessage('No tasks for ' + subj, event.threadID);
-            tasks.forEach(function(task) {
-              api.sendMessage(task.taskName + " | " + moment.unix(task.dueDate).format("MMM Do, YYYY"), event.threadID);
-            })
-          });
-        } else {
-          console.log('Show all tasks');
+          subj = msg.slice(' for '.length).split('\"')[1];
+          query['taskSubject'] = subj;
         }
+
+        Tasks.find(query, function(err, tasks) {
+          if (err) return console.error(err);
+          if (utils.isEmpty(tasks)) return api.sendMessage('No tasks found', event.threadID);
+
+          tasks.forEach(function(task) {
+
+            var out = task.taskName + ' | ' + moment.unix(task.dueDate).format('MMM Do, YYYY');
+            if (subj == null)
+              out = task.taskSubject + ' ' + out
+
+            api.sendMessage(out, event.threadID);
+          });
+        });
       }
     }
   })
