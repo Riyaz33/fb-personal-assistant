@@ -1,0 +1,29 @@
+{
+  "name": "fb-personal-assistant",
+  "version": "1.0.0",
+  "description": "A personal Messenger bot to keep track of upcoming tasks.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riyaz33/fb-personal-assistant.git"
+  },
+  "keywords": [
+    "fb",
+    "messenger",
+    "bot",
+    "personal",
+    "assistant",
+    "ai",
+    "machine-learning",
+    "chat-api"
+  ],
+  "author": "Kashav Madan <kshvmdn@gmail.com> (kshvmdn.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/riyaz33/fb-personal-assistant/issues"
+  },
+  "homepage": "https://github.com/riyaz33/fb-personal-assistant#readme"
+}
