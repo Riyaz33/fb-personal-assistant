@@ -18,5 +18,9 @@ A personal FB Messenger bot to help with keeping track of upcoming tasks.
 + Run app
 
 	```
-	mongod && node index.js
+	mongod
+	```
+	
+	```
+	node index.js
 	```
